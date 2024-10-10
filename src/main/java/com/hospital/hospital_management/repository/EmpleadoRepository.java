@@ -1,0 +1,10 @@
+package com.hospital.hospital_management.repository;
+
+import com.hospital.hospital_management.model.Empleado;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface EmpleadoRepository extends JpaRepository<Empleado, Long> {
+    // Aquí puedes agregar métodos de consulta personalizada si es necesario
+}
