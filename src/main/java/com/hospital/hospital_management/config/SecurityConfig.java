@@ -17,30 +17,30 @@ public class SecurityConfig {
 
     @Lazy
     @Autowired
-    private UsuarioService usuarioService; // Asegúrate de que no se inyecte aquí un bean de configuración
+    private UsuarioService usuarioService; 
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(); // Codificador de contraseñas
+        return new BCryptPasswordEncoder(); 
     }
 
    @Bean
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
         .authorizeHttpRequests()
-            .requestMatchers("/register", "/login", "/resources/**").permitAll()  // Permitir acceso a login y registro
-            .anyRequest().authenticated()  // Requiere autenticación para cualquier otra solicitud
+            .requestMatchers("/register", "/login", "/resources/**").permitAll()  
+            .anyRequest().authenticated() 
             .and()
         .formLogin()
-            .loginPage("/login")  // Página de inicio de sesión
-            .defaultSuccessUrl("/home", true)  // Redirige a la página principal tras iniciar sesión
+            .loginPage("/login") 
+            .defaultSuccessUrl("/home", true)  
             .permitAll()
             .and()
         .logout()
             .logoutUrl("/logout")
-            .logoutSuccessUrl("/login?logout")  // Redirige a login con mensaje de logout
+            .logoutSuccessUrl("/login?logout") 
             .permitAll();
 
-    return http.build();  // Construir el filtro de seguridad
+    return http.build();  
 }
 }

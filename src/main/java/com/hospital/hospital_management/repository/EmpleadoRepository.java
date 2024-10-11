@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EmpleadoRepository extends JpaRepository<Empleado, Long> {
-    // Aquí puedes agregar métodos de consulta personalizada si es necesario
+    
 }

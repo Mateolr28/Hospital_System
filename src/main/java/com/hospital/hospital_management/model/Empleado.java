@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.hospital.hospital_management.model;
 
 import jakarta.persistence.*;
@@ -37,7 +33,6 @@ public class Empleado {
     @Past(message = "La fecha de nacimiento debe ser en el pasado")
     private LocalDate fechaNacimiento;
 
-    // Getters y setters
 
     public Long getId() {
         return id;

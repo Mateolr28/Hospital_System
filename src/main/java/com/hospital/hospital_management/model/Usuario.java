@@ -1,29 +1,24 @@
 package com.hospital.hospital_management.model;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import java.util.HashSet;
-import java.util.Set;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Usuario {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
+    private Long id; // Cambiado a Long para ser la clave primaria
+
     private String username;
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "usuario_rol", 
-        joinColumns = @JoinColumn(name = "usuario_id"), 
-        inverseJoinColumns = @JoinColumn(name = "rol_id"))
-    private Set<Rol> roles = new HashSet<>();
+    @ManyToOne
+    private Rol role; // Asegúrate de que Rol es una entidad válida
 
     // Getters y Setters
-
     public Long getId() {
         return id;
     }
@@ -48,12 +43,11 @@ public class Usuario {
         this.password = password;
     }
 
-    public Set<Rol> getRoles() {
-        return roles;
+    public Rol getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Rol> roles) {
-        this.roles = roles;
+    public void setRole(Rol role) {
+        this.role = role;
     }
-    
 }
